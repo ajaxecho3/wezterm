@@ -1,6 +1,8 @@
 local wezterm = require('wezterm')
 
 local nf = wezterm.nerdfonts
+local GLYPH_COD_SYMBOL_EVENT = nf.cod_symbol_event
+local GLYPH_COD_SYMBOL_TERMINAL = nf.cod_terminal --[[ '' ]]
 local GLYPH_SEMI_CIRCLE_LEFT = nf.ple_lower_right_triangle --[[ '' ]]
 
 local GLYPH_SEMI_CIRCLE_RIGHT = nf.ple_upper_left_triangle --[[ '' ]]
@@ -28,7 +30,13 @@ local _set_title = function(process_name, base_title, max_width, inset)
    inset = inset or 6
 
    if process_name:len() > 0 then
-      title = '[ ' .. process_name .. ' ] ' .. base_title
+      title = GLYPH_COD_SYMBOL_EVENT
+         .. ' '
+         .. process_name
+         .. ' '
+         .. GLYPH_COD_SYMBOL_TERMINAL
+         .. ' '
+         .. base_title
    else
       title = base_title
    end
